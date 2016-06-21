@@ -1,4 +1,4 @@
 [include]
-    path = .config/config-home/gitconfig
-    path = .config/config-home/gitconfig.os
-    path = .config/config-home/gitconfig.local
+    path = .config/config-git/gitconfig
+    path = .config/config-git/gitconfig.os
+    path = .config/config-git/gitconfig.local
