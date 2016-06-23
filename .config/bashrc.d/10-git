@@ -27,4 +27,4 @@ function git_aliases {
 # Call this function separately on only those machines where it is ok
 #setup_gitawareprompt
 
-git_aliases
+git_aliases; unset git_aliases
