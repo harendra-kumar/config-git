@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function get_remotes ()
+{
+  cd $1
+  git remote
+}
+
+for i in $(echo *)
+do
+  if test -d "$i/.git"
+  then
+    remotes=$(get_remotes $i)
+    if test -z "$remotes"
+    then
+      echo "$i"
+    fi
+  fi
+done

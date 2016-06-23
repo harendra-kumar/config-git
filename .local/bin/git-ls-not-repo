@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for i in $(echo *)
+do
+  if test ! -d "$i/.git"
+  then
+    echo "Non-git file or directory: $i"
+  fi
+done

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function get_unpushed ()
+{
+  cd $1
+  git ls-files -m |wc -l
+}
+
+for i in $(echo *)
+do
+  if test -d "$i/.git"
+  then
+    unpushed=$(get_unpushed $i | tr -d '[[:space:]]')
+    if test "$unpushed" != "0"
+    then
+      echo "$i: $unpushed"
+    fi
+  fi
+done
