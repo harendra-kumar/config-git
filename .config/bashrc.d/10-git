@@ -1,0 +1,18 @@
+#!/bin/bash
+
+CONFIG_DIR=~/.config/config-git
+
+setup_gitawareprompt () {
+  local dir=$CONFIG_DIR/git-aware-prompt
+  if test -e $dir
+  then
+    export GITAWAREPROMPT=$dir
+    source $GITAWAREPROMPT/main.sh
+  fi
+}
+
+# This is problematic for big repositories on VirtualBox guests because of slow
+# IO through shared folders. So we disable it in common config and enable only
+# for non VM machines in the non-vm hosts' bashrc only.
+
+# Call this function separately on only those machines where it is ok
