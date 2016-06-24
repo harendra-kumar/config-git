@@ -2,16 +2,18 @@
 
 [alias]
   # List all aliases
-  alias = config --get-regexp alias
+  # TODO: tabular format
+  alias = config --get-regexp alias | cut -f2- -d'.'
 
   # Examining
   s   = status
-  ss  = status -uno
+  ss  = status -uno   # shorter status - no untracked files
+  sss  = status -suno # shorter shorter status
 
   lg   = log --graph --decorate --oneline
-  lga  = log --graph --decorate --oneline --all
-  lgb  = log --graph --decorate --oneline --branches
-  lgl  = log --graph --decorate
+  lga  = log --graph --decorate --oneline --all      # log all
+  lgb  = log --graph --decorate --oneline --branches # log branches
+  lgl  = log --graph --decorate                      # log long
 
   lgs  = log -S
   lgg  = log -G
