@@ -19,6 +19,7 @@
   lgg  = log -G
 
   ls = ls-files
+  dt = difftool
 
   br = branch
   cbr = rev-parse --abbrev-ref HEAD
