@@ -1,10 +1,6 @@
 # vim: ft=gitconfig
 
 [alias]
-  # List all aliases
-  # TODO: tabular format
-  alias = config --get-regexp alias | cut -f2- -d'.'
-
   # Examining
   s   = status
   ss  = status -uno   # shorter status - no untracked files
@@ -39,6 +35,9 @@
   # submodules
   subdiff = !"git submodule foreach --recursive --quiet '[ \"$(git status -s)\" ] && echo \"--- $name ---\" && git status -s && git diff --unified=1 || :'"
   subbr   = !"git submodule foreach --recursive 'git rev-parse --abbrev-ref HEAD'"
+
+  # List all aliases
+  alias = !"git config --get-regexp alias | cut -f2 -d'.' | awk '{printf \"%-10s\", $1; for(i=2;i<=NF;++i) printf \"%s \", $i; print \"\"}'"
 
 [core]
   editor = vim
