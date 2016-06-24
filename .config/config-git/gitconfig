@@ -1,6 +1,9 @@
 # vim: ft=gitconfig
 
 [alias]
+  # List all aliases
+  alias = config --get-regexp alias
+
   # Examining
   s   = status
   ss  = status -uno
