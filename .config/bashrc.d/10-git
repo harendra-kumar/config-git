@@ -2,13 +2,56 @@
 
 CONFIG_DIR=~/.config/config-git
 
+# Assumes powerline fonts installed for the branch symbol to work
+set_git_info_vars() {
+  unset git_prompt_brsym
+  unset git_prompt_repo
+
+  if test -n "$git_branch"
+  then
+    git_prompt_brsym="  "
+    # Show the repo when GIT_DIR enironment variables is set. It is especially
+    # important to remind when the git repo and the work-tree are separate.
+    # It helps especially in case of vcsh enter.
+    # TODO detect whether the current tree is under the git dir or not.
+    # Also we should not show GIT_DIR if pwd is not inside the work-tree
+    if test -n "$GIT_DIR"
+    then
+      git_prompt_repo=" ($(basename ${GIT_DIR%.git}))"
+    fi
+  fi
+}
+
+# append additional git var processing at the end
+set_git_prompt_command() {
+  # Won't work if the existing command ends with a ';'
+  PROMPT_COMMAND="$PROMPT_COMMAND set_git_info_vars"
+}
+
+# Note: this is portable, the color vars are set only when the terminal
+# supports color
+set_git_prompt_var() {
+  PS_GIT='\
+\[$bldred\]$git_prompt_repo\
+\[$txtrst\]$git_prompt_brsym\
+\[$txtcyn\]$git_branch\
+\[$txtred\]$git_dirty'
+}
+
 setup_gitawareprompt () {
+  # We should not keep appending to the PROMPT_COMMAND if we are called
+  # multiple times. so reset everything first everytime
+  reset_prompt
   local dir=$CONFIG_DIR/git-aware-prompt
   if test -e $dir
   then
-    export GITAWAREPROMPT=$dir
-    source $GITAWAREPROMPT/main.sh
+    set_git_prompt_command
+    source $dir/main.sh
+    set_git_prompt_var
   fi
+  # TODO: when in git repo print git repo + curdir relative to repo root
+  # instead of full path
+  setup_prompt
 }
 
 # This is problematic for big repositories on VirtualBox guests because of slow
