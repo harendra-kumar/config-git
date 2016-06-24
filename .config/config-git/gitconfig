@@ -1,3 +1,32 @@
+# vim: ft=gitconfig
+
+[alias]
+  s   = status
+  ss  = status -uno
+
+  lg   = log --graph --decorate --oneline
+  lga  = log --graph --decorate --oneline --all
+  lgb  = log --graph --decorate --oneline --branches
+  lgl  = log --graph --decorate
+
+  lgs  = log -S
+  lgg  = log -G
+
+  ls = ls-files
+
+  a = add
+  au = add -u
+  rst = reset HEAD
+
+  br = branch
+  root = rev-parse --show-toplevel
+
+  conflicts = !git ls-files --unmerged | cut -c51- | sort -u | xargs $EDITOR
+  resolve   = !git ls-files --unmerged | cut -c51- | sort -u | xargs git add
+
+  subdiff = !"git submodule foreach --recursive --quiet '[ \"$(git status -s)\" ] && echo \"--- $name ---\" && git status -s && git diff --unified=1 || :'"
+  subbr   = !"git submodule foreach --recursive 'git rev-parse --abbrev-ref HEAD'"
+
 [core]
   editor = vim
 
