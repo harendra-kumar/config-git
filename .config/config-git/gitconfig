@@ -16,6 +16,7 @@
   ls = ls-files
 
   br = branch
+  cbr = rev-parse --abbrev-ref HEAD
   root = rev-parse --show-toplevel
 
   # Modifying
