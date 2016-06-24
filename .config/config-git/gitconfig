@@ -1,6 +1,7 @@
 # vim: ft=gitconfig
 
 [alias]
+  # Examining
   s   = status
   ss  = status -uno
 
@@ -14,16 +15,21 @@
 
   ls = ls-files
 
+  br = branch
+  root = rev-parse --show-toplevel
+
+  # Modifying
   a = add
   au = add -u
   rst = reset HEAD
 
-  br = branch
-  root = rev-parse --show-toplevel
+  co = checkout
+  ci = commit
 
   conflicts = !git ls-files --unmerged | cut -c51- | sort -u | xargs $EDITOR
   resolve   = !git ls-files --unmerged | cut -c51- | sort -u | xargs git add
 
+  # submodules
   subdiff = !"git submodule foreach --recursive --quiet '[ \"$(git status -s)\" ] && echo \"--- $name ---\" && git status -s && git diff --unified=1 || :'"
   subbr   = !"git submodule foreach --recursive 'git rev-parse --abbrev-ref HEAD'"
 
