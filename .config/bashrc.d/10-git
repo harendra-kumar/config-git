@@ -58,5 +58,6 @@ setup_gitawareprompt () {
 # IO through shared folders. So we disable it in common config and enable only
 # for non VM machines in the non-vm hosts' bashrc only.
 
-# Call this function separately on only those machines where it is ok
-#setup_gitawareprompt
+# Enable by default and use default_prompt function from the shell to disable
+# when necessary.
+setup_gitawareprompt
