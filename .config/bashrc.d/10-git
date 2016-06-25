@@ -46,6 +46,8 @@ setup_gitawareprompt () {
   if test -e $dir
   then
     set_git_prompt_command
+    # This variable is required by main.sh to source other files
+    export GITAWAREPROMPT=$dir
     source $dir/main.sh
     set_git_prompt_var
   fi
