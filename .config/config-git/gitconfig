@@ -14,7 +14,9 @@
   lgs  = log -S
   lgg  = log -G
 
-  ls = ls-files
+  ls   = ls-files
+  lsu  = ls-files --others --exclude-standard
+  lsau = ls-files --others
   dt = difftool
 
   br = branch
