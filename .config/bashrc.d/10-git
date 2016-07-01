@@ -25,19 +25,21 @@ set_git_info_vars() {
 # append additional git var processing at the end
 set_git_prompt_command() {
   # Won't work if the existing command ends with a ';'
-  PROMPT_COMMAND="$PROMPT_COMMAND set_git_info_vars"
+  PROMPT_COMMAND="find_git_branch; set_git_info_vars"
 }
 
 # Note: this is portable, the color vars are set only when the terminal
-# supports color
+# supports color. find_git_dirty is not scalable because it uses git
+# status.
 set_git_prompt_var() {
   PS_GIT='\
 \[$bldred\]$git_prompt_repo\
 \[$txtrst\]$git_prompt_brsym\
-\[$txtcyn\]$git_branch\
-\[$txtred\]$git_dirty'
+\[$txtcyn\]$git_branch'
+#\[$txtred\]$git_dirty'
 }
 
+# TODO remove git_aware_prompt module. find the branch inline.
 setup_gitawareprompt () {
   # We should not keep appending to the PROMPT_COMMAND if we are called
   # multiple times. so reset everything first everytime
@@ -45,10 +47,10 @@ setup_gitawareprompt () {
   local dir=$CONFIG_DIR/git-aware-prompt
   if test -e $dir
   then
-    set_git_prompt_command
     # This variable is required by main.sh to source other files
     export GITAWAREPROMPT=$dir
     source $dir/main.sh
+    set_git_prompt_command
     set_git_prompt_var
   fi
   # TODO: when in git repo print git repo + curdir relative to repo root
