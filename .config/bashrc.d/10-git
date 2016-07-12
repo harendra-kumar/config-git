@@ -64,4 +64,4 @@ setup_gitawareprompt () {
 
 # Enable by default and use default_prompt function from the shell to disable
 # when necessary.
-setup_gitawareprompt
+setup_gitawareprompt #; unset setup_gitawareprompt
