@@ -6,13 +6,13 @@
   ss  = status -uno   # shorter status - no untracked files
   sss  = status -suno # shorter shorter status
 
-  lg   = log --graph --decorate --oneline
-  lga  = log --graph --decorate --oneline --all      # log all
-  lgb  = log --graph --decorate --oneline --branches # log branches
-  lgl  = log --graph --decorate                      # log long
+  lg   = log --graph --decorate --pretty=format:'%C(auto)%h %cd %d %s' --date=short
+  lga  = log --graph --decorate --pretty=format:'%C(auto)%h %cd %d %s' --date=short --all       # log all
+  lgb  = log --graph --decorate --pretty=format:'%C(auto)%h %cd %d %s' --date=short --branches  # log branches
+  lgl  = log --graph --decorate # log long
 
-  lgs  = log -S
-  lgg  = log -G
+  lgs  = log -S  # Search
+  lgg  = log -G  # Grep
 
   ls   = ls-files
   lsu  = ls-files --others --exclude-standard
