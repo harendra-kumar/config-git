@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# List sub-directories/files in the current directory which are not git repos.
+
 for i in $(echo *)
 do
   if test ! -d "$i/.git"

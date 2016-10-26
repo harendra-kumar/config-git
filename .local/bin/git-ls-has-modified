@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Check which repos in the current directory have modified files.
+
 function get_unpushed ()
 {
   cd $1

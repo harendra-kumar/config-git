@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# List all repos in the current directory which do not have a remote
+# configured.
+
 function get_remotes ()
 {
   cd $1

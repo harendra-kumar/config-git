@@ -59,9 +59,9 @@ setup_gitawareprompt () {
 }
 
 # This is problematic for big repositories on VirtualBox guests because of slow
-# IO through shared folders. So we disable it in common config and enable only
-# for non VM machines in the non-vm hosts' bashrc only.
+# IO through shared folders. If that happens you can comment this out and use
+# this function manually when needed.
 
-# Enable by default and use default_prompt function from the shell to disable
-# when necessary.
+# Enabled by default. You can use default_prompt function available in
+# config-bash to disable when necessary.
 setup_gitawareprompt #; unset setup_gitawareprompt
