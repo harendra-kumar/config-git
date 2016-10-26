@@ -10,7 +10,7 @@ set_git_info_vars() {
   if test -n "$git_branch"
   then
     git_prompt_brsym="  "
-    # Show the repo when GIT_DIR enironment variables is set. It is especially
+    # Show the repo when GIT_DIR environment variables is set. It is especially
     # important to remind when the git repo and the work-tree are separate.
     # It helps especially in case of vcsh enter.
     # TODO detect whether the current tree is under the git dir or not.
